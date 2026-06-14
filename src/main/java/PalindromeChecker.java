@@ -2,17 +2,16 @@ public class PalindromeChecker {
 
     public static void main(String[] args) {
 
-        String input = "malayalam";
-        boolean isPalindrome = true;
-        for (int i = 0, j = input.length() - 1; i < input.length() / 2; i++, j--) {
-            if (input.charAt(i) != input.charAt(j)) {
-                isPalindrome = false;
-                break;
-            }
+        String input = "m";
+        System.out.println(isPalindrome(input));
+    }
 
+    public static boolean isPalindrome(String text) {
+        for (int i = 0, j = text.length() - 1; i < text.length() / 2; i++, j--) {
+            if (text.charAt(i) != text.charAt(j))
+                return false;
         }
-
-        System.out.println(isPalindrome);
+        return true;
     }
 
 }
