@@ -1,11 +1,11 @@
-public class AverageOfArray {
+public class ArrayOperations {
     public static void main(String[] args) {
-        int[] numbers = null;
+        int[] numbers = {1};
 
         double average = findAverage(numbers);
 
         //System.out.println("Average: " + average);
-        System.out.println(containsZero(numbers));
+        System.out.println(findSecondSmallest(numbers));
 
     }
 
@@ -47,6 +47,27 @@ public class AverageOfArray {
             if (num == 0) return true;
         }
         return false;
+    }
+
+    public static int findSecondSmallest(int[] numbers) {
+        if (numbers == null || numbers.length <= 1)throw new IllegalArgumentException("Empty Array/ single element array");//temporary exception
+        int smallest =Integer.MAX_VALUE;
+        int secSmall =Integer.MAX_VALUE;
+
+
+        for (int num : numbers) {
+           if(num <smallest){
+               secSmall = smallest;
+               smallest = num;
+           }
+           else if(num > smallest && num <secSmall){
+               secSmall = num;
+           }
+
+        }
+        if (secSmall == Integer.MAX_VALUE)
+            throw new IllegalArgumentException("No second smallest");
+        return secSmall;
     }
 }
 
