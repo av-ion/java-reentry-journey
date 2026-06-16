@@ -1,11 +1,11 @@
 public class ArrayOperations {
     public static void main(String[] args) {
-        int[] numbers = {1};
+        int[] numbers = {5,-5};
 
         double average = findAverage(numbers);
 
         //System.out.println("Average: " + average);
-        System.out.println(findSecondSmallest(numbers));
+        System.out.println(findLargestConsecutiveDifference(numbers));
 
     }
 
@@ -68,6 +68,19 @@ public class ArrayOperations {
         if (secSmall == Integer.MAX_VALUE)
             throw new IllegalArgumentException("No second smallest");
         return secSmall;
+    }
+
+    public static int findLargestConsecutiveDifference(int[] numbers){
+        if(numbers== null || numbers.length <2) throw new IllegalArgumentException("Array is invalid");
+        int difference = 0;
+        for(int i = 1;i < numbers.length; i++){
+            if(Math.abs(numbers[i] - numbers[i-1]) > difference) {
+                difference = Math.abs(numbers[i] - numbers[i-1]);
+
+
+            }
+        }
+        return difference;
     }
 }
 
