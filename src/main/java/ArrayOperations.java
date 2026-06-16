@@ -1,11 +1,13 @@
+import java.util.NoSuchElementException;
+
 public class ArrayOperations {
     public static void main(String[] args) {
-        int[] numbers = {5,-5};
+        int[] numbers = {1,0,2,2,2};
 
         double average = findAverage(numbers);
 
         //System.out.println("Average: " + average);
-        System.out.println(findLargestConsecutiveDifference(numbers));
+        System.out.println(findMajorityElement(numbers));
 
     }
 
@@ -82,5 +84,28 @@ public class ArrayOperations {
         }
         return difference;
     }
-}
 
+    public static int findMajorityElement(int[] numbers) {
+        if (numbers == null || numbers.length<2) throw new IllegalArgumentException("Array is invalid");
+        int majorityCount = numbers.length / 2;
+        int count = 0;
+        int num = 0;
+        for (int i = 0; i < numbers.length; i++) {
+            int temp = 0;
+
+            for (int j = i; j < numbers.length; j++) {
+
+                if (numbers[i] == numbers[j]) {
+                    temp++;
+                }
+            }
+            if (temp > count) {
+                count = temp;
+                num = numbers[i];
+            }
+
+        }
+        if (count > majorityCount) return num;
+        else throw new NoSuchElementException("No majority element exists");
+    }
+}
