@@ -1,3 +1,6 @@
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 public class ExceptionHandling {
     public static void main(String[] args) {
         processAge("-25");
@@ -23,5 +26,23 @@ public class ExceptionHandling {
         } finally {
             System.out.println("Processing complete");
         }
+    }
+
+    public static int getElement(int[] numbers, int index){
+
+        if(index <0 || index>= numbers.length){
+            throw  new IllegalArgumentException("Invalid Index");
+        }
+
+        return numbers[index];
+
+    }
+
+    public static void loadConfiguration(boolean fileExists) throws IOException {
+        if (!fileExists)
+            throw new IOException("Configuration file not found.");
+
+        System.out.println("Configuration loaded successfully.");
+
     }
 }
