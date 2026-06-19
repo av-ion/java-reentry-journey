@@ -7,9 +7,9 @@ import java.util.Set;
 
 public class FindingMissingValues {
     public static void main(String[] args) {
-        Set<Integer>  expected = Set.of();
-        Set<Integer> actual = Set.of(2, 4);
-        System.out.println(findMissingValues(expected,actual));
+        Set<String>  expected = Set.of("A", "B", "C");
+        Set<String> actual = Set.of("A", "B");
+        System.out.println(findUnexpectedValues(expected,actual));
 
 
     }
@@ -26,4 +26,17 @@ public class FindingMissingValues {
         }
         return Collections.unmodifiableSet(missing);
     }
-}
+
+
+public static Set<String> findUnexpectedValues(Set<String> allowed,Set<String> received){
+        if(allowed == null) throw new IllegalArgumentException("allowed values can't be null");
+        if(received == null) throw new IllegalArgumentException("Received value can't be null");
+        Set<String> unexpected = new LinkedHashSet<>();
+
+        for(String i : received){
+            if(!allowed.contains(i))
+                unexpected.add(i);
+        }
+        return Collections.unmodifiableSet(unexpected);
+
+}}
